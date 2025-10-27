@@ -40,7 +40,7 @@
         <div class="container">
             <div class="loan-hero-content animate">
                 <h1>Financial Solutions Tailored for You</h1>
-                <p class="tagline">"We don't just lend money — we invest in your future. Your hustle, our boost."</p>
+                <p class="tagline">We don't just lend money, we invest in your future. Your hustle, our boost.</p>
                 <div class="loan-features">
                     <div class="loan-feature">
                         <i class="fas fa-check-circle"></i>
@@ -207,17 +207,34 @@
                                 <input type="number" id="loanAmount" name="loanAmount" min="500" required>
                             </div>
                             <div class="form-group">
-                                <label for="loanType">Loan Type*</label>
-                                <select id="loanType" name="loanType" required>
-                                    <option value="">Select loan type</option>
-                                    <option value="personal">Personal Loan</option>
-                                    <option value="business">Business Loan</option>
-                                    <option value="student">Student Loan</option>
-                                    <option value="emergency">Emergency Loan</option>
+                                <label for="loanTerm">Loan Term (Weeks)*</label>
+                                <select id="loanTerm" name="loanTerm" required>
+                                    <option value="">Select term</option>
+                                    <option value="1">1 week</option>
+                                    <option value="2">2 weeks</option>
+                                    <option value="3">3 weeks</option>
+                                    <option value="4">4 weeks</option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="form-row">
+                            <div class="form-group">
+                                <label for="interestRate">Interest Rate (%)</label>
+                                <input type="text" id="interestRate" name="interestRate" readonly>
+                            </div>
+                        </div>
+
+                        <!-- Repayment Summary Box -->
+                        <div id="repaymentSummary" class="repayment-summary">
+                            <h4>Repayment Summary</h4>
+                            <p><strong>Loan Amount:</strong> K<span id="displayAmount">0</span></p>
+                            <p><strong>Interest Rate:</strong> <span id="displayRate">0</span>%</p>
+                            <p><strong>Total Repayment:</strong> K<span id="displayTotal">0</span></p>
+                        </div>
+                        <!--
+                        
+                         <div class="form-row">
                             <div class="form-group">
                                 <label for="loanTerm">Loan Term (Months)*</label>
                                 <select id="loanTerm" name="loanTerm" required>
@@ -235,6 +252,10 @@
                                 <input type="text" id="interestRate" name="interestRate" readonly>
                             </div>
                         </div>
+                        
+        
+                        -->
+                       
 
                         <h3>Collateral Information</h3>
                         <div class="form-group">
@@ -262,8 +283,8 @@
                             <label for="loanPurpose">Loan Purpose (Optional)</label>
                             <textarea id="loanPurpose" name="loanPurpose" rows="3"></textarea>
                         </div>
-
-                        <h3>Required Documents</h3>
+                        <!-- Document Uploads 
+                         <h3>Required Documents</h3>
                         <div class="form-group file-upload">
                             <label for="idCopy">National ID Card (NRC)*</label>
                             <input type="file" id="idCopy" name="idCopy" accept="image/*,.pdf" required>
@@ -293,6 +314,9 @@
                             <input type="file" id="collateralProof" name="collateralProof" accept="image/*,.pdf" required>
                             <div class="file-info">Upload documents proving ownership of collateral</div>
                         </div>
+                        
+                        -->
+                        
 
                         <div class="form-group terms-checkbox">
                             <input type="checkbox" id="termsAgree" name="termsAgree" required>
@@ -307,6 +331,32 @@
             </div>
         </div>
     </section>
+
+    <!-- Terms and Conditions Section -->
+<section class="loan-terms">
+    <div class="container">
+      <h2>Loan Terms and Conditions</h2>
+      <p>Before submitting your application, please review our loan policies carefully:</p>
+  
+      <ul class="terms-list">
+        <li>All loans are collateral-based and must be backed by a verifiable asset.</li>
+        <li>Students can borrow up to a maximum of <strong>K3,000</strong> only.</li>
+        <li>Interest rates depend on the selected repayment term:
+          <ul>
+            <li>1 Week – 10%</li>
+            <li>2 Weeks – 20%</li>
+            <li>3 Weeks – 25%</li>
+            <li>4 Weeks – 35%</li>
+          </ul>
+        </li>
+        <li>Loan approval takes 24–48 hours after collateral verification.</li>
+        <li>Repayments must be made on or before the agreed due date to avoid penalties.</li>
+        <li>Failure to repay may result in the forfeiture of the collateral asset.</li>
+        <li>All personal information submitted is kept confidential and used only for loan processing.</li>
+      </ul>
+    </div>
+  </section>
+  
 
     <!-- Footer -->
     <footer>
