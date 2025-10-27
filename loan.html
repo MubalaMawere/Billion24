@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for a Loan - BILLION24</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles_css/styles.css">
+    <link rel="stylesheet" href="styles_css/loan.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="assests/BILLION24.png" alt="BILLION24 Logo">
+                <div class="logo-text">BILLION<span>24</span></div> 
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#leadership">Leadership</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="loan.html" class="btn btn-loan-nav active">Apply for a Loan</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Loan Hero Section -->
+    <section class="loan-hero">
+        <div class="container">
+            <div class="loan-hero-content animate">
+                <h1>Financial Solutions Tailored for You</h1>
+                <p class="tagline">"We don't just lend money — we invest in your future. Your hustle, our boost."</p>
+                <div class="loan-features">
+                    <div class="loan-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Quick Approval</span>
+                    </div>
+                    <div class="loan-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Competitive Rates</span>
+                    </div>
+                    <div class="loan-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Flexible Terms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loan Application Section -->
+    <section class="loan-application">
+        <div class="container">
+            <div class="section-title animate">
+                <h2>Loan Application</h2>
+                <p>Complete the form below to apply for a loan. Our team will review your application and contact you within 24-48 hours.</p>
+            </div>
+
+            <div class="loan-container">
+                <div class="loan-info">
+                    <h3>How It Works</h3>
+                    <div class="loan-steps">
+                        <div class="loan-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Complete Application</h4>
+                                <p>Fill out the form with your personal details and loan requirements</p>
+                            </div>
+                        </div>
+                        <div class="loan-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Document Verification</h4>
+                                <p>Upload the required documents for verification</p>
+                            </div>
+                        </div>
+                        <div class="loan-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Application Review</h4>
+                                <p>Our team will review your application within 24-48 hours</p>
+                            </div>
+                        </div>
+                        <div class="loan-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Loan Approval</h4>
+                                <p>Once approved, funds will be disbursed to your account</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interest-rates">
+                        <h3>Interest Rates</h3>
+                        <div class="rate-table">
+                            <div class="rate-row header">
+                                <div class="rate-cell">Loan Type</div>
+                                <div class="rate-cell">Interest Rate</div>
+                                <div class="rate-cell">Term</div>
+                            </div>
+                            <div class="rate-row">
+                                <div class="rate-cell">Personal Loan</div>
+                                <div class="rate-cell">15% p.a.</div>
+                                <div class="rate-cell">6-24 months</div>
+                            </div>
+                            <div class="rate-row">
+                                <div class="rate-cell">Business Loan</div>
+                                <div class="rate-cell">12% p.a.</div>
+                                <div class="rate-cell">12-36 months</div>
+                            </div>
+                            <div class="rate-row">
+                                <div class="rate-cell">Student Loan</div>
+                                <div class="rate-cell">8% p.a.</div>
+                                <div class="rate-cell">12-48 months</div>
+                            </div>
+                            <div class="rate-row">
+                                <div class="rate-cell">Emergency Loan</div>
+                                <div class="rate-cell">18% p.a.</div>
+                                <div class="rate-cell">3-12 months</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="loan-form-container">
+                    <form id="loanApplicationForm" class="loan-form">
+                        <h3>Personal Information</h3>
+                        <div class="form-group">
+                            <label for="fullName">Full Name*</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="idNumber">National ID Number*</label>
+                                <input type="text" id="idNumber" name="idNumber" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number*</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address*</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <h3>Occupation Details</h3>
+                        <div class="form-group">
+                            <label for="occupation">Occupation Type*</label>
+                            <select id="occupation" name="occupation" required>
+                                <option value="">Select your occupation</option>
+                                <option value="student">Student</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="government">Government Employee</option>
+                                <option value="private">Private Sector Employee</option>
+                                <option value="business">Business Owner</option>
+                                <option value="freelancer">Freelancer</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Student-specific fields (initially hidden) -->
+                        <div id="studentFields" class="conditional-fields">
+                            <div class="form-group">
+                                <label for="studentId">Student ID Number*</label>
+                                <input type="text" id="studentId" name="studentId">
+                            </div>
+                            <div class="form-group">
+                                <label for="institution">Educational Institution*</label>
+                                <input type="text" id="institution" name="institution">
+                            </div>
+                        </div>
+
+                        <!-- Employment fields (initially hidden) -->
+                        <div id="employmentFields" class="conditional-fields">
+                            <div class="form-group">
+                                <label for="employer">Employer Name*</label>
+                                <input type="text" id="employer" name="employer">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="position">Position/Title*</label>
+                                    <input type="text" id="position" name="position">
+                                </div>
+                                <div class="form-group">
+                                    <label for="employmentYears">Years Employed*</label>
+                                    <input type="number" id="employmentYears" name="employmentYears" min="0" step="0.5">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>Loan Details</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="loanAmount">Loan Amount (K)*</label>
+                                <input type="number" id="loanAmount" name="loanAmount" min="500" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loanType">Loan Type*</label>
+                                <select id="loanType" name="loanType" required>
+                                    <option value="">Select loan type</option>
+                                    <option value="personal">Personal Loan</option>
+                                    <option value="business">Business Loan</option>
+                                    <option value="student">Student Loan</option>
+                                    <option value="emergency">Emergency Loan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="loanTerm">Loan Term (Months)*</label>
+                                <select id="loanTerm" name="loanTerm" required>
+                                    <option value="">Select term</option>
+                                    <option value="3">3 months</option>
+                                    <option value="6">6 months</option>
+                                    <option value="12">12 months</option>
+                                    <option value="24">24 months</option>
+                                    <option value="36">36 months</option>
+                                    <option value="48">48 months</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="interestRate">Interest Rate (%)</label>
+                                <input type="text" id="interestRate" name="interestRate" readonly>
+                            </div>
+                        </div>
+
+                        <h3>Collateral Information</h3>
+                        <div class="form-group">
+                            <label for="collateralType">Collateral Type*</label>
+                            <select id="collateralType" name="collateralType" required>
+                                <option value="">Select collateral type</option>
+                                <option value="property">Real Estate Property</option>
+                                <option value="vehicle">Vehicle</option>
+                                <option value="savings">Fixed Deposit/Savings</option>
+                                <option value="insurance">Insurance Policy</option>
+                                <option value="stocks">Stocks/Investments</option>
+                                <option value="other">Other Assets</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="collateralValue">Estimated Value (K)*</label>
+                            <input type="number" id="collateralValue" name="collateralValue" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="collateralDescription">Collateral Description*</label>
+                            <textarea id="collateralDescription" name="collateralDescription" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loanPurpose">Loan Purpose (Optional)</label>
+                            <textarea id="loanPurpose" name="loanPurpose" rows="3"></textarea>
+                        </div>
+
+                        <h3>Required Documents</h3>
+                        <div class="form-group file-upload">
+                            <label for="idCopy">National ID Card (NRC)*</label>
+                            <input type="file" id="idCopy" name="idCopy" accept="image/*,.pdf" required>
+                            <div class="file-info">Upload a clear copy of your National ID Card (front and back)</div>
+                        </div>
+                        
+                        <div class="form-group file-upload">
+                            <label for="selfie">Recent Selfie*</label>
+                            <input type="file" id="selfie" name="selfie" accept="image/*" required>
+                            <div class="file-info">Upload a clear, recent photo of yourself</div>
+                        </div>
+
+                        <div id="payslipUpload" class="form-group file-upload conditional-fields">
+                            <label for="payslip">Latest Payslip*</label>
+                            <input type="file" id="payslip" name="payslip" accept="image/*,.pdf">
+                            <div class="file-info">Upload your most recent payslip</div>
+                        </div>
+
+                        <div id="studentIdUpload" class="form-group file-upload conditional-fields">
+                            <label for="studentIdCopy">Student ID Card*</label>
+                            <input type="file" id="studentIdCopy" name="studentIdCopy" accept="image/*,.pdf">
+                            <div class="file-info">Upload a clear copy of your student ID card</div>
+                        </div>
+
+                        <div class="form-group file-upload">
+                            <label for="collateralProof">Proof of Collateral*</label>
+                            <input type="file" id="collateralProof" name="collateralProof" accept="image/*,.pdf" required>
+                            <div class="file-info">Upload documents proving ownership of collateral</div>
+                        </div>
+
+                        <div class="form-group terms-checkbox">
+                            <input type="checkbox" id="termsAgree" name="termsAgree" required>
+                            <label for="termsAgree">I agree to the <a href="#">Terms and Conditions</a> and consent to the processing of my personal data</label>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="btn btn-loan">Submit Application</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>About BILLION24</h4>
+                    <p>BILLION24 is a dynamic and future-focused company specializing in innovative software solutions, IoT technologies, and tech consulting services.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="loan.html">Loans</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+260123456789"><i class="fas fa-phone"></i> +260 123 456 789</a></li>
+                        <li><a href="mailto:info@billion24.com"><i class="fas fa-envelope"></i> info@billion24.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Lusaka, Zambia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2023 BILLION24. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="script_js/script.js"></script>
+    <script src="script_js/loan.js"></script>
+</body>
+</html>
