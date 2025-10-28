@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ---- Google Sheets Integration ----
 const scriptURL = "https://script.google.com/macros/s/AKfycbzdeVEkhx4dp-0BzaxiA7wceEYI1fan1F4RUzsGh96aR5RaoCtuDSkM6c7KHTxNLAFooA/exec";
-
+const form = document.getElementById("loanApplicationForm");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -107,30 +107,35 @@ form.addEventListener("submit", function (e) {
     collateralType: document.getElementById("collateralType").value,
     collateralValue: document.getElementById("collateralValue").value,
     collateralDescription: document.getElementById("collateralDescription").value,
+    loanPurpose: document.getElementById("loanPurpose").value,
   };
 
+  e.target.querySelector("button[type='submit']").disabled = true;
+
+    
   fetch(scriptURL, {
     method: "POST",
     mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(formData),
   })
-    .then((response) => {
-      if (response.ok) {
-        alert("✅ Loan application submitted successfully!\n\nPlease bring your collateral item to the BILLION24 office for verification and collection of your approved funds.");
-        form.reset();
-        document.getElementById("displayAmount").textContent = "0";
-        document.getElementById("displayRate").textContent = "0";
-        document.getElementById("displayTotal").textContent = "0";
-      } else {
-        alert("⚠️ Submission failed. Please try again.");
-      }
+    .then(() => {
+      
+      alert(
+        "✅ Loan application submitted successfully!\n\nPlease bring your collateral item to the BILLION24 office for verification and collection of your approved funds."
+        
+      );
+      e.target.querySelector("button[type='submit']").disabled = false;
+
+      form.reset();
+      document.getElementById("displayAmount").textContent = "0";
+      document.getElementById("displayRate").textContent = "0";
+      document.getElementById("displayTotal").textContent = "0";
     })
     .catch((error) => {
-      console.error("Error!", error.message);
-      alert("❌ Error sending application. Check your internet connection.");
+      console.error("Error!", error);
+      alert("❌ Network error — please check your connection and try again.");
     });
+  
 });
 // ---- Google Sheets Integration ----
