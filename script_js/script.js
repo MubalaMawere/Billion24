@@ -1,9 +1,11 @@
 // Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const nav = document.getElementById('nav');
+const header = document.getElementById('header');
 
 mobileMenuBtn.addEventListener('click', () => {
     nav.classList.toggle('active');
+    header.classList.toggle('active');
     mobileMenuBtn.innerHTML = nav.classList.contains('active') ? 
         '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
 });
@@ -12,12 +14,23 @@ mobileMenuBtn.addEventListener('click', () => {
 document.querySelectorAll('nav ul li a').forEach(link => {
     link.addEventListener('click', () => {
         nav.classList.remove('active');
+        header.classList.remove('active');
         mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
     });
 });
 
+// Close mobile menu when clicking outside or on backdrop
+document.addEventListener('click', (e) => {
+    if (nav.classList.contains('active') && 
+        !nav.contains(e.target) && 
+        !mobileMenuBtn.contains(e.target)) {
+        nav.classList.remove('active');
+        header.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+});
+
 // Header scroll effect
-const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
         header.classList.add('scrolled');
@@ -39,10 +52,26 @@ window.addEventListener('scroll', () => {
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const href = this.getAttribute('href');
+        
+        // Handle back-to-top button (href="#")
+        if (href === '#') {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            return;
+        }
+        
+        // Handle other anchor links
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
