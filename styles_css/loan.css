@@ -234,7 +234,7 @@
 }
 
 .btn-loan {
-    background-color: var(--secondary);
+    background-color: var(--primary);
     color: var(--light);
     padding: 0.8rem 2rem;
     font-size: 1.1rem;
@@ -245,7 +245,7 @@
 }
 
 .btn-loan:hover {
-    background-color: var(--primary);
+    background-color: var(--secondary);
     transform: translateY(-2px);
 }
 

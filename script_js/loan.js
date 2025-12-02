@@ -13,17 +13,17 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // BILLION24 interest rates
     const interestRates = {
-      "1week": 10,
+      "1week": 13,
       "2weeks": 20,
-      "3weeks": 25,
+      "3weeks": 30,
       "4weeks": 35,
     };
   
     // Map loanTerm (weeks) to rates — adjust when you add week-based dropdown
     const loanTermRates = {
-      "1": 10,
+      "1": 13,
       "2": 20,
-      "3": 25,
+      "3": 30,
       "4": 35,
     };
   
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then(() => {
           alert(
-            "✅ Loan application submitted successfully!\n\nPlease bring your collateral item to the BILLION24 office for verification and collection of your approved funds."
+            "✅ Loan application submitted successfully!\n\nPlease bring your collateral item to BILLION24 office for verification and collection of your approved funds."
           );
           e.target.querySelector("button[type='submit']").disabled = false;
 
