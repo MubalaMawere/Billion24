@@ -91,9 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
         idNumber: document.getElementById("idNumber").value,
         phone: document.getElementById("phone").value,
         email: document.getElementById("email").value,
-        occupation: occupation,
-        loanAmount: loanAmount,
-        loanTerm: loanTerm,
+        occupation: document.getElementById("occupation").value,
+        loanAmount: document.getElementById("loanAmount").value,
+        loanTerm: document.getElementById("loanTerm").value,
+       // occupation: occupation,
+        //loanAmount: loanAmount,
+       // loanTerm: loanTerm,
         interestRate: document.getElementById("interestRate").value,
         totalRepayment: document.getElementById("displayTotal").textContent,
         collateralType: document.getElementById("collateralType").value,
@@ -113,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then(() => {
           alert(
-            "✅ Loan application submitted successfully!\n\nPlease bring your collateral item to BILLION24 office for verification and collection of your approved funds."
+            " Loan application submitted successfully ✅!\n\nPlease bring your collateral item to BILLION24 office for verification and collection of your approved funds."
           );
           e.target.querySelector("button[type='submit']").disabled = false;
 
