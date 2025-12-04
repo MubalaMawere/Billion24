@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loanTermSelect.addEventListener("change", updateRepaymentSummary);
     
     // Google Sheets Integration
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyctQMFeJvgQO1btVpNR06vkms7-4PpvAxLodgqyCfjIEOfxMWpTPXcu2fK62uGwmzLgA/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxYllcwq06cQIzSA1EMi8FbuDmmeKqwyBNTZAWrwVsKT29nQOAS0YtgNmKsy369DmvJHw/exec";
     
     form.addEventListener("submit", function (e) {
       e.preventDefault();
