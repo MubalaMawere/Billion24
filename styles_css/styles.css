@@ -217,7 +217,7 @@ nav ul li a.btn::after {
 .btn {
     display: inline-block;
     padding: 12px 30px;
-    background-color: var(--accent);
+    background-color: var(--primary);
     color: var(--light);
     border: none;
     border-radius: 4px;
@@ -229,7 +229,7 @@ nav ul li a.btn::after {
 }
 
 .btn:hover {
-    background-color: #0088d4;
+    background-color: var(--accent);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -965,7 +965,7 @@ footer {
     right: 30px;
     width: 50px;
     height: 50px;
-    background-color: var(--accent);
+    background-color: var(--primary);
     color: var(--light);
     border-radius: 50%;
     display: flex;
@@ -985,7 +985,7 @@ footer {
 }
 
 .back-to-top:hover {
-    background-color: var(--primary);
+    background-color: var(--accent);
     transform: translateY(-5px);
 }
 

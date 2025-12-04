@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loanTermSelect.addEventListener("change", updateRepaymentSummary);
     
     // Google Sheets Integration
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzdeVEkhx4dp-0BzaxiA7wceEYI1fan1F4RUzsGh96aR5RaoCtuDSkM6c7KHTxNLAFooA/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxODRLvFqd5ihBkSSliRmwxOFb6B54O4YavS98vewj-qVHdIkmhVv57cAVyTWPbeyQ9RA/exec";
     
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -94,9 +94,9 @@ document.addEventListener("DOMContentLoaded", function () {
         occupation: document.getElementById("occupation").value,
         loanAmount: document.getElementById("loanAmount").value,
         loanTerm: document.getElementById("loanTerm").value,
-       // occupation: occupation,
+        //occupation: occupation,
         //loanAmount: loanAmount,
-       // loanTerm: loanTerm,
+        //loanTerm: loanTerm,
         interestRate: document.getElementById("interestRate").value,
         totalRepayment: document.getElementById("displayTotal").textContent,
         collateralType: document.getElementById("collateralType").value,
@@ -108,7 +108,11 @@ document.addEventListener("DOMContentLoaded", function () {
       e.target.querySelector("button[type='submit']").disabled = true;
 
       
-      fetch(scriptURL, {
+      
+      
+        // WITH CORS MODE
+      
+     fetch(scriptURL, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
@@ -130,6 +134,36 @@ document.addEventListener("DOMContentLoaded", function () {
           alert("❌ Network error — please check your connection and try again.");
           e.target.querySelector("button[type='submit']").disabled = false;
         });
+
+
+
+        // WITHOUT CORS MODE
       
+     /* fetch(scriptURL, {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json" 
+        },
+        body: JSON.stringify(formData),
+      })
+        .then(res => res.json())
+        .then((response) => {
+          alert(
+            "Loan application submitted successfully ✅!\n\nPlease bring your collateral item to BILLION24 office for verification and collection of your approved funds."
+          );
+      
+          form.reset();
+          document.getElementById("displayAmount").textContent = "0";
+          document.getElementById("displayRate").textContent = "0";
+          document.getElementById("displayTotal").textContent = "0";
+        })
+        .catch((error) => {
+          console.error("Error!", error);
+          alert("❌ Network error — please try again.");
+        });*/
+
     });
   });
+
+
+ 
