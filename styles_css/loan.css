@@ -345,3 +345,93 @@
     line-height: 1.7;
   }
   
+
+  /* Modal Styles popup submission message */
+  /* BACKDROP */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    animation: fadeIn 0.3s ease;
+  }
+  
+  /* ANIMATIONS */
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { transform: translateY(30px); opacity: 0; }
+                       to { transform: translateY(0); opacity: 1; } }
+  
+  /* MODAL BOX */
+  .modal-box {
+    max-width: 420px;
+    margin: 12% auto;
+    background: #0a1a33; /* navy blue */
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    padding: 30px;
+    border-radius: 18px;
+    color: #ffffff;
+    text-align: center;
+    animation: slideUp 0.4s ease-out;
+    box-shadow: 0 0 30px rgba(0,0,0,0.25);
+  }
+  
+  /* LOGO CIRCLE */
+  .logo-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #d4af37; /* gold border */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px auto;
+  }
+  
+  .logo-inner {
+    font-size: 35px;
+    font-weight: 600;
+    color: #d4af37;
+    font-family: 'Georgia', serif;
+  }
+  
+  /* TEXT */
+  .modal-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #d4af37;
+    letter-spacing: 0.5px;
+  }
+  
+  .modal-message {
+    font-size: 16px;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  
+  .modal-message-sm {
+    font-size: 14px;
+    opacity: 0.85;
+    line-height: 1.5;
+  }
+  
+  /* BUTTON */
+  .modal-btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #d4af37; /* gold */
+    color: #0a1a33;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.2s ease;
+  }
+  
+  .modal-btn:hover {
+    background: #e8c44a;
+  }
+  
