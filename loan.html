@@ -57,11 +57,11 @@
             Please bring your collateral item to the BILLION24 office for verification and collection of funds.
           </p>
       
-          <button id="closeModal" class="modal-btn">OK</button>
+          <button id="closeModal" class="modal-btn" type="button">OK</button>
         </div>
       </div>
       
-
+      
 
     <!-- Loan Hero Section -->
     <section class="loan-hero">
@@ -181,201 +181,242 @@
                 </div>
 
                 <div class="loan-form-container">
-                    <form id="loanApplicationForm" class="loan-form">
-                        <h3>Personal Information</h3>
-                        <div class="form-group">
-                            <label for="fullName">Full Name*</label>
-                            <input type="text" id="fullName" name="fullName" required>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="idNumber">National ID Number*</label>
-                                <input type="text" id="idNumber" name="idNumber" required>
+                    <form id="loanApplicationForm" class="loan-form wizard-form">
+                        <div class="wizard-progress-wrap">
+                            <div class="wizard-progress-bar">
+                                <div class="wizard-progress-fill" id="wizardProgressFill"></div>
                             </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number*</label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address*</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-
-                        <h3>Occupation Details</h3>
-                        <div class="form-group">
-                            <label for="occupation">Occupation Type*</label>
-                            <select id="occupation" name="occupation" required>
-                                <option value="">Select your occupation</option>
-                                <option value="student">Student</option>
-                                <option value="teacher">Teacher</option>
-                                <option value="government">Government Employee</option>
-                                <option value="private">Private Sector Employee</option>
-                                <option value="business">Business Owner</option>
-                                <option value="freelancer">Freelancer</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
                         
-                        <!-- Student-specific fields (initially hidden) -->
-                        <div id="studentFields" class="conditional-fields">
-                            <div class="form-group">
-                                <label for="studentId">Student ID Number*</label>
-                                <input type="text" id="studentId" name="studentId">
-                            </div>
-                            <div class="form-group">
-                                <label for="institution">Educational Institution*</label>
-                                <input type="text" id="institution" name="institution">
+                            <div class="wizard-progress-top">
+                                <span class="wizard-step-text" id="wizardStepText">Step 1 of 5</span>
+                        
+                                <div class="wizard-step-title-wrap">
+                                    <span class="wizard-step-icon" id="wizardStepIcon">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                    <span class="wizard-step-title" id="wizardStepTitle">Personal Information</span>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Employment fields (initially hidden) -->
-                        <div id="employmentFields" class="conditional-fields">
+                    
+                        <!-- STEP 1 -->
+                        <div class="form-step active" data-step="1">
+                            <h3>Personal Information</h3>
+                    
                             <div class="form-group">
-                                <label for="employer">Employer Name*</label>
-                                <input type="text" id="employer" name="employer">
+                                <label for="fullName">Full Name*</label>
+                                <input type="text" id="fullName" name="fullName" required>
                             </div>
+                    
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="position">Position/Title*</label>
-                                    <input type="text" id="position" name="position">
+                                    <label for="idNumber">National ID Number*</label>
+                                    <input type="text" id="idNumber" name="idNumber" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="employmentYears">Years Employed*</label>
-                                    <input type="number" id="employmentYears" name="employmentYears" min="0" step="0.5">
+                                    <label for="phone">Phone Number*</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="email">Email Address*</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                    
+                        <!-- STEP 2 -->
+                        <div class="form-step" data-step="2">
+                            <h3>Occupation Details</h3>
+                    
+                            <div class="form-group">
+                                <label for="occupation">Occupation Type*</label>
+                                <select id="occupation" name="occupation" required>
+                                    <option value="">Select your occupation</option>
+                                    <option value="student">Student</option>
+                                    <option value="teacher">Teacher</option>
+                                    <option value="government">Government Employee</option>
+                                    <option value="private">Private Sector Employee</option>
+                                    <option value="business">Business Owner</option>
+                                    <option value="freelancer">Freelancer</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                    
+                            <div id="studentFields" class="conditional-fields">
+                                <div class="form-group">
+                                    <label for="studentId">Student ID Number*</label>
+                                    <input type="text" id="studentId" name="studentId">
+                                </div>
+                                <div class="form-group">
+                                    <label for="institution">Educational Institution*</label>
+                                    <input type="text" id="institution" name="institution">
+                                </div>
+                            </div>
+                    
+                            <div id="employmentFields" class="conditional-fields">
+                                <div class="form-group">
+                                    <label for="employer">Employer Name*</label>
+                                    <input type="text" id="employer" name="employer">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="position">Position/Title*</label>
+                                        <input type="text" id="position" name="position">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employmentYears">Years Employed*</label>
+                                        <input type="number" id="employmentYears" name="employmentYears" min="0" step="0.5">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <h3>Loan Details</h3>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="loanAmount">Loan Amount (K)*</label>
-                                <input type="number" id="loanAmount" name="loanAmount" min="300" required>
+                    
+                        <!-- STEP 3 -->
+                        <div class="form-step" data-step="3">
+                            <h3>Loan Details</h3>
+                    
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="loanAmount">Loan Amount (K)*</label>
+                                    <input type="number" id="loanAmount" name="loanAmount" min="300" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="loanTerm">Loan Term (Weeks)*</label>
+                                    <select id="loanTerm" name="loanTerm" required>
+                                        <option value="">Select term</option>
+                                        <option value="1">1 week</option>
+                                        <option value="2">2 weeks</option>
+                                        <option value="3">3 weeks</option>
+                                        <option value="4">4 weeks</option>
+                                    </select>
+                                </div>
                             </div>
+                    
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="interestRate">Interest Rate (%)</label>
+                                    <input type="text" id="interestRate" name="interestRate" readonly>
+                                </div>
+                            </div>
+                    
+                            <div id="repaymentSummary" class="repayment-summary">
+                                <h4>Repayment Summary</h4>
+                                <p><strong>Loan Amount:</strong> K<span id="displayAmount">0</span></p>
+                                <p><strong>Interest Rate:</strong> <span id="displayRate">0</span>%</p>
+                                <p><strong>Total Repayment:</strong> K<span id="displayTotal">0</span></p>
+                                <p><strong>Due Date:</strong> <span id="displayDueDate">Not set</span></p>
+                            </div>
+                        </div>
+                    
+                        <!-- STEP 4 -->
+                        <div class="form-step" data-step="4">
+                            <h3>Collateral Information</h3>
+                    
                             <div class="form-group">
-                                <label for="loanTerm">Loan Term (Weeks)*</label>
-                                <select id="loanTerm" name="loanTerm" required>
-                                    <option value="">Select term</option>
-                                    <option value="1">1 week</option>
-                                    <option value="2">2 weeks</option>
-                                    <option value="3">3 weeks</option>
-                                    <option value="4">4 weeks</option>
+                                <label for="collateralType">Collateral Type*</label>
+                                <select id="collateralType" name="collateralType" required>
+                                    <option value="">Select collateral type</option>
+                                    <option value="Phone">Phone</option>
+                                    <option value="Laptop">Laptop</option>
+                                    <option value="TV">Television Set</option>
+                                    <option value="Console Game">Console Game</option>
+                                    <option value="property">Real Estate Property</option>
+                                    <option value="vehicle">Vehicle</option>
+                                    <option value="savings">Fixed Deposit/Savings</option>
+                                    <option value="insurance">Insurance Policy</option>
+                                    <option value="stocks">Stocks/Investments</option>
+                                    <option value="other">Other Assets</option>
                                 </select>
                             </div>
-                        </div>
-
-                        <div class="form-row">
+                    
                             <div class="form-group">
-                                <label for="interestRate">Interest Rate (%)</label>
-                                <input type="text" id="interestRate" name="interestRate" readonly>
+                                <label for="collateralValue">Estimated Value (K)*</label>
+                                <input type="number" id="collateralValue" name="collateralValue" min="0" required>
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="collateralDescription">Collateral Description*</label>
+                                <textarea id="collateralDescription" name="collateralDescription" rows="3" required></textarea>
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="loanPurpose">Loan Purpose (Optional)</label>
+                                <textarea id="loanPurpose" name="loanPurpose" rows="3"></textarea>
                             </div>
                         </div>
-
-                        <!-- Repayment Summary Box -->
-                        <div id="repaymentSummary" class="repayment-summary">
-                            <h4>Repayment Summary</h4>
-                            <p><strong>Loan Amount:</strong> K<span id="displayAmount">0</span></p>
-                            <p><strong>Interest Rate:</strong> <span id="displayRate">0</span>%</p>
-                            <p><strong>Total Repayment:</strong> K<span id="displayTotal">0</span></p>
-                        </div>
-                        <!--
-                        
-                         <div class="form-row">
-                            <div class="form-group">
-                                <label for="loanTerm">Loan Term (Months)*</label>
-                                <select id="loanTerm" name="loanTerm" required>
-                                    <option value="">Select term</option>
-                                    <option value="3">3 months</option>
-                                    <option value="6">6 months</option>
-                                    <option value="12">12 months</option>
-                                    <option value="24">24 months</option>
-                                    <option value="36">36 months</option>
-                                    <option value="48">48 months</option>
-                                </select>
+                    
+                        <!-- STEP 5 -->
+                        <div class="form-step" data-step="5">
+                            <h3>Review & Submit</h3>
+                    
+                            <div class="review-grid" id="reviewBox">
+                                <div class="review-card">
+                                    <div class="review-card-header">
+                                        <i class="fas fa-user"></i>
+                                        <h4>Personal Information</h4>
+                                    </div>
+                                    <div class="review-card-body">
+                                        <div class="review-item"><span>Full Name</span><strong id="reviewFullName"></strong></div>
+                                        <div class="review-item"><span>ID Number</span><strong id="reviewIdNumber"></strong></div>
+                                        <div class="review-item"><span>Phone</span><strong id="reviewPhone"></strong></div>
+                                        <div class="review-item"><span>Email</span><strong id="reviewEmail"></strong></div>
+                                    </div>
+                                </div>
+                            
+                                <div class="review-card">
+                                    <div class="review-card-header">
+                                        <i class="fas fa-briefcase"></i>
+                                        <h4>Occupation Details</h4>
+                                    </div>
+                                    <div class="review-card-body">
+                                        <div class="review-item"><span>Occupation</span><strong id="reviewOccupation"></strong></div>
+                                        <div class="review-item"><span>Student ID</span><strong id="reviewStudentId"></strong></div>
+                                        <div class="review-item"><span>Institution</span><strong id="reviewInstitution"></strong></div>
+                                        <div class="review-item"><span>Employer</span><strong id="reviewEmployer"></strong></div>
+                                        <div class="review-item"><span>Position</span><strong id="reviewPosition"></strong></div>
+                                        <div class="review-item"><span>Employment Years</span><strong id="reviewEmploymentYears"></strong></div>
+                                    </div>
+                                </div>
+                            
+                                <div class="review-card">
+                                    <div class="review-card-header">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <h4>Loan Summary</h4>
+                                    </div>
+                                    <div class="review-card-body">
+                                        <div class="review-item"><span>Loan Amount</span><strong id="reviewLoanAmount"></strong></div>
+                                        <div class="review-item"><span>Loan Term</span><strong id="reviewLoanTerm"></strong></div>
+                                        <div class="review-item"><span>Interest Rate</span><strong id="reviewInterestRate"></strong></div>
+                                        <div class="review-item"><span>Total Repayment</span><strong id="reviewTotalRepayment"></strong></div>
+                                        <div class="review-item"><span>Due Date</span><strong id="reviewDueDate"></strong></div>
+                                    </div>
+                                </div>
+                            
+                                <div class="review-card">
+                                    <div class="review-card-header">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <h4>Collateral Details</h4>
+                                    </div>
+                                    <div class="review-card-body">
+                                        <div class="review-item"><span>Collateral Type</span><strong id="reviewCollateralType"></strong></div>
+                                        <div class="review-item"><span>Collateral Value</span><strong id="reviewCollateralValue"></strong></div>
+                                        <div class="review-item"><span>Description</span><strong id="reviewCollateralDescription"></strong></div>
+                                        <div class="review-item"><span>Loan Purpose</span><strong id="reviewLoanPurpose"></strong></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="interestRate">Interest Rate (%)</label>
-                                <input type="text" id="interestRate" name="interestRate" readonly>
+                    
+                            <div class="form-group terms-checkbox">
+                                <input type="checkbox" id="termsAgree" name="termsAgree" required>
+                                <label for="termsAgree">I agree to the <a href="#">Terms and Conditions</a> and consent to the processing of my personal data</label>
                             </div>
                         </div>
-                        
-        
-                        -->
-                       
-
-                        <h3>Collateral Information</h3>
-                        <div class="form-group">
-                            <label for="collateralType">Collateral Type*</label>
-                            <select id="collateralType" name="collateralType" required>
-                                <option value="">Select collateral type</option>
-                                <option value="Phone">Phone</option>
-                                <option value="Laptop">Laptop</option>
-                                <option value="TV">Television Set</option>
-                                <option value="Console Game">Console Game</option>
-                                <option value="property">Real Estate Property</option>
-                                <option value="vehicle">Vehicle</option>
-                                <option value="savings">Fixed Deposit/Savings</option>
-                                <option value="insurance">Insurance Policy</option>
-                                <option value="stocks">Stocks/Investments</option>
-                                <option value="other">Other Assets</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="collateralValue">Estimated Value (K)*</label>
-                            <input type="number" id="collateralValue" name="collateralValue" min="0" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="collateralDescription">Collateral Description*</label>
-                            <textarea id="collateralDescription" name="collateralDescription" rows="3" required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="loanPurpose">Loan Purpose (Optional)</label>
-                            <textarea id="loanPurpose" name="loanPurpose" rows="3"></textarea>
-                        </div>
-                        <!-- Document Uploads 
-                         <h3>Required Documents</h3>
-                        <div class="form-group file-upload">
-                            <label for="idCopy">National ID Card (NRC)*</label>
-                            <input type="file" id="idCopy" name="idCopy" accept="image/*,.pdf" required>
-                            <div class="file-info">Upload a clear copy of your National ID Card (front and back)</div>
-                        </div>
-                        
-                        <div class="form-group file-upload">
-                            <label for="selfie">Recent Selfie*</label>
-                            <input type="file" id="selfie" name="selfie" accept="image/*" required>
-                            <div class="file-info">Upload a clear, recent photo of yourself</div>
-                        </div>
-
-                        <div id="payslipUpload" class="form-group file-upload conditional-fields">
-                            <label for="payslip">Latest Payslip*</label>
-                            <input type="file" id="payslip" name="payslip" accept="image/*,.pdf">
-                            <div class="file-info">Upload your most recent payslip</div>
-                        </div>
-
-                        <div id="studentIdUpload" class="form-group file-upload conditional-fields">
-                            <label for="studentIdCopy">Student ID Card*</label>
-                            <input type="file" id="studentIdCopy" name="studentIdCopy" accept="image/*,.pdf">
-                            <div class="file-info">Upload a clear copy of your student ID card</div>
-                        </div>
-
-                        <div class="form-group file-upload">
-                            <label for="collateralProof">Proof of Collateral*</label>
-                            <input type="file" id="collateralProof" name="collateralProof" accept="image/*,.pdf" required>
-                            <div class="file-info">Upload documents proving ownership of collateral</div>
-                        </div>
-                        
-                        -->
-                        
-
-                        <div class="form-group terms-checkbox">
-                            <input type="checkbox" id="termsAgree" name="termsAgree" required>
-                            <label for="termsAgree">I agree to the <a href="#">Terms and Conditions</a> and consent to the processing of my personal data</label>
-                        </div>
-
-                        <div class="form-submit">
-                            <button type="submit" class="btn btn-loan">Submit Application</button>
+                    
+                        <div class="wizard-buttons">
+                            <button type="button" class="wizard-btn wizard-btn-secondary" id="prevStepBtn">Back</button>
+                            <button type="button" class="wizard-btn wizard-btn-primary" id="nextStepBtn">Next</button>
+                            <button type="submit" class="wizard-btn wizard-btn-primary" id="submitStepBtn">Submit Application</button>
                         </div>
                     </form>
                 </div>
@@ -403,7 +444,7 @@
         <li>Loan approval is processed within 24–48 hours after successful collateral verification.</li>
         <li>Repayments must be made on or before the agreed due date to avoid additional charges or penalties.</li>
         <li>Failure to repay may result in the forfeiture of the collateral asset, as outlined in the agreement.</li>
-        <li>Upon disbursement of funds, the contractually agreed interest rate becomes fixed after 24 hours and will not be altered thereafter.</li>
+        <li>Upon disbursement of funds, the contractually agreed interest rate becomes fixed and will not be altered thereafter.</li>
         <li>All personal information provided is treated as confidential and is used solely for loan processing and verification purposes.</li>
       </ul>
     </div>
@@ -416,7 +457,7 @@
             <div class="footer-container">
                 <div class="footer-col">
                     <h4>About BILLION24</h4>
-                    <p>BILLION24 is a dynamic and future focused company specializing in innovative software solutions, IoT technologies, and tech consulting services.</p>
+                    <p>BILLION24 is a dynamic and future focused company specializing in innovative software solutions, IoT technologies, tech consulting and financial services.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
@@ -449,7 +490,7 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <p>&copy; 2025 BILLION24. All Rights Reserved.</p>
+                <p>&copy; 2026 BILLION24. All Rights Reserved.</p>
             </div>
         </div>
     </footer>

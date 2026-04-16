@@ -36,18 +36,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Header Styles */
 header {
-    background-color: rgba(14, 42, 71, 0.9); /* Deep navy blue with reduced opacity */
+    background-color: rgba(14, 42, 71, 0.92);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     position: fixed;
     width: 100%;
-    z-index: 1000;
+    z-index: 3000;
     padding: 15px 0;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s ease, padding 0.2s ease;
 }
 
 header.scrolled {
     padding: 10px 0;
-    background-color: rgba(14, 42, 71, 0.95); /* Slightly more opaque when scrolled */
+    background-color: rgba(14, 42, 71, 0.96);
 }
 
 .header-container {
@@ -59,6 +59,8 @@ header.scrolled {
 .logo {
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 3001;
 }
 
 .logo img {
@@ -71,11 +73,16 @@ header.scrolled {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 1.5rem;
-    color: var(--secondary); /* Gold/bronze from logo */
+    color: var(--secondary);
 }
 
 .logo-text span {
-    color: var(--accent); /* Lighter gold for accents */
+    color: var(--accent);
+}
+
+nav {
+    position: relative;
+    z-index: 3001;
 }
 
 nav ul {
@@ -89,15 +96,15 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: var(--light); /* White text for nav buttons */
+    color: var(--light);
     font-weight: 500;
     font-size: 1rem;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
     position: relative;
 }
 
 nav ul li a:hover {
-    color: var(--secondary); /* Gold/bronze from logo on hover */
+    color: var(--secondary);
 }
 
 nav ul li a::after {
@@ -105,10 +112,10 @@ nav ul li a::after {
     position: absolute;
     width: 0;
     height: 2px;
-    background: var(--secondary); /* Gold/bronze underline */
+    background: var(--secondary);
     bottom: -5px;
     left: 0;
-    transition: width 0.3s ease;
+    transition: width 0.2s ease;
 }
 
 nav ul li a:hover::after {
@@ -118,58 +125,121 @@ nav ul li a:hover::after {
 nav ul li a.btn {
     background-color: var(--secondary);
     color: var(--primary);
-    padding: 8px 15px;
-    border-radius: 4px;
+    padding: 10px 16px;
+    border-radius: 6px;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 nav ul li a.btn:hover {
     background-color: var(--light);
     color: var(--primary);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 nav ul li a.btn::after {
     display: none;
 }
 
+/* Mobile Menu Button */
 .mobile-menu-btn {
     display: none;
-    background: transparent;
-    border: 2px solid var(--secondary);
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 2rem;
-    color: var(--secondary);
-    cursor: pointer;
-    transition: all 0.15s ease;
-    z-index: 1001;
-    position: relative;
-    min-width: 55px;
-    min-height: 55px;
     align-items: center;
     justify-content: center;
+    background: transparent;
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    width: 52px;
+    height: 52px;
+    font-size: 1.5rem;
+    color: var(--secondary);
+    cursor: pointer;
+    position: relative;
+    z-index: 4000;
+    transition: background-color 0.2s ease, transform 0.12s ease;
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
 }
 
 .mobile-menu-btn:hover {
-    background-color: rgba(212, 178, 106, 0.2);
-    color: var(--secondary);
-    transform: scale(1.02);
+    background-color: rgba(212, 178, 106, 0.15);
+    transform: translateY(-1px);
 }
 
 .mobile-menu-btn:active {
-    transform: scale(0.98);
-    transition: transform 0.05s ease;
+    transform: scale(0.96);
 }
 
 .mobile-menu-btn i {
-    transition: transform 0.2s ease;
+    pointer-events: none;
 }
 
-.mobile-menu-btn:hover i {
-    transform: rotate(90deg);
+/* Mobile nav */
+@media (max-width: 992px) {
+    .mobile-menu-btn {
+        display: inline-flex;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        right: 20px;
+        width: min(320px, calc(100vw - 40px));
+        background: rgba(14, 42, 71, 0.98);
+        border: 1px solid rgba(212, 178, 106, 0.2);
+        border-radius: 14px;
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+        padding: 16px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+        pointer-events: none;
+    }
+
+    nav.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul li {
+        margin-left: 0;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 12px 14px;
+        border-radius: 8px;
+    }
+
+    nav ul li a:hover {
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    nav ul li a::after {
+        display: none;
+    }
+
+    nav ul li a.btn {
+        text-align: center;
+        margin-top: 6px;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .mobile-menu-btn:hover,
+    nav ul li a.btn:hover,
+    .btn:hover {
+        transform: none;
+    }
 }
 
 /* Hero Section */

@@ -1,6 +1,5 @@
 /* Loan Page Specific Styles */
 
-/* Loan Hero Section */
 .loan-hero {
     background: linear-gradient(rgba(14, 42, 71, 0.9), rgba(14, 42, 71, 0.95)), url('../assests/loan-hero-bg.jpg');
     background-size: cover;
@@ -41,7 +40,6 @@
     font-size: 1.2rem;
 }
 
-/* Loan Application Section */
 .loan-application {
     padding: 80px 0;
     background-color: #f9f9f9;
@@ -54,19 +52,20 @@
     margin-top: 3rem;
 }
 
-/* Loan Info Sidebar */
-.loan-info {
+.loan-info,
+.loan-form-container {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-.loan-info h3 {
+.loan-info h3,
+.loan-form h3 {
     color: var(--primary);
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-    border-bottom: 2px solid var(--secondary);
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #eee;
     padding-bottom: 0.5rem;
 }
 
@@ -105,7 +104,6 @@
     color: #666;
 }
 
-/* Interest Rates Table */
 .interest-rates {
     margin-top: 2rem;
 }
@@ -133,26 +131,6 @@
     font-size: 0.9rem;
 }
 
-/* Loan Form */
-.loan-form-container {
-    background-color: white;
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.loan-form h3 {
-    color: var(--primary);
-    margin: 1.5rem 0 1rem;
-    font-size: 1.3rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5rem;
-}
-
-.loan-form h3:first-child {
-    margin-top: 0;
-}
-
 .form-group {
     margin-bottom: 1.2rem;
 }
@@ -175,18 +153,19 @@
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.85rem;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 8px;
     font-family: inherit;
     font-size: 1rem;
-    transition: border-color 0.3s;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(212, 178, 106, 0.12);
     outline: none;
 }
 
@@ -209,7 +188,7 @@
 .terms-checkbox {
     display: flex;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 0.6rem;
     margin-top: 1.5rem;
 }
 
@@ -236,30 +215,215 @@
 .btn-loan {
     background-color: var(--primary);
     color: var(--light);
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
+    padding: 0.95rem 2rem;
+    font-size: 1.05rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: background-color 0.2s ease, transform 0.12s ease;
+    min-height: 50px;
+    min-width: 180px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btn-loan:hover {
     background-color: var(--secondary);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+}
+
+.btn-loan:active {
+    transform: scale(0.98);
+}
+
+.btn-loan:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+    transform: none;
 }
 
 /* Conditional Fields */
 .conditional-fields {
     display: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    background: linear-gradient(180deg, #fbfdff 0%, #f5f9fd 100%);
+    border: 1px solid #e5edf5;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
-/* Responsive Styles */
+.conditional-fields.show-fields {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.conditional-fields .form-group:last-child,
+.conditional-fields .form-row:last-child {
+    margin-bottom: 0;
+}
+
+.repayment-summary {
+    background-color: #f0f8ff;
+    border: 1px solid #dbe7f1;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+}
+
+.repayment-summary h4 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.repayment-summary p {
+    margin: 0.35rem 0;
+    color: #333;
+}
+
+.loan-terms {
+    background-color: #f1f8ff;
+    padding: 60px 0;
+    margin-top: 60px;
+}
+
+.loan-terms h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.loan-terms p {
+    text-align: center;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.terms-list {
+    max-width: 800px;
+    margin: 0 auto;
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    color: #333;
+    line-height: 1.7;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 560px;
+    background: #0e2a47;
+    border: 1px solid rgba(212, 178, 106, 0.35);
+    border-radius: 24px;
+    padding: 28px 24px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    animation: slideUp 0.28s ease;
+}
+
+.modal-logo {
+    margin-bottom: 14px;
+}
+
+.logo-circle {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    border: 3px solid #d4b26a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.logo-inner {
+    font-size: 38px;
+    font-weight: 700;
+    color: #d4b26a;
+    font-family: Georgia, serif;
+}
+
+.modal-title {
+    font-size: 2rem;
+    line-height: 1.25;
+    color: #d4b26a;
+    margin: 0 0 14px;
+    font-weight: 700;
+}
+
+.modal-message {
+    font-size: 1.08rem;
+    line-height: 1.6;
+    margin: 0 0 10px;
+    color: #ffffff;
+}
+
+.modal-message-sm {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0 0 22px;
+    color: rgba(255,255,255,0.9);
+}
+
+.modal-btn {
+    min-width: 110px;
+    min-height: 48px;
+    padding: 12px 24px;
+    background: #d4b26a;
+    color: #0e2a47;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: background-color 0.2s ease, transform 0.12s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.modal-btn:hover {
+    background: #e0bf79;
+}
+
+.modal-btn:active {
+    transform: scale(0.98);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
 @media (max-width: 992px) {
     .loan-container {
         grid-template-columns: 1fr;
     }
-    
+
     .loan-features {
         flex-direction: column;
         align-items: center;
@@ -271,17 +435,35 @@
     .loan-hero-content h1 {
         font-size: 2.2rem;
     }
-    
+
     .loan-hero-content .tagline {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr;
     }
-    
+
     .rate-row {
         font-size: 0.8rem;
+    }
+
+    .modal-box {
+        max-width: 430px;
+        padding: 24px 18px;
+        border-radius: 22px;
+    }
+
+    .modal-title {
+        font-size: 1.7rem;
+    }
+
+    .modal-message {
+        font-size: 1rem;
+    }
+
+    .modal-message-sm {
+        font-size: 0.95rem;
     }
 }
 
@@ -289,149 +471,392 @@
     .loan-application {
         padding: 60px 0;
     }
-    
+
     .loan-form-container,
     .loan-info {
-        padding: 1.5rem;
+        padding: 1.25rem;
+    }
+
+    .modal {
+        padding: 12px;
+    }
+
+    .modal-box {
+        max-width: 100%;
+        padding: 22px 16px;
+        border-radius: 20px;
+    }
+
+    .modal-title {
+        font-size: 1.35rem;
+        line-height: 1.35;
+    }
+
+    .modal-message {
+        font-size: 0.96rem;
+        line-height: 1.55;
+    }
+
+    .modal-message-sm {
+        font-size: 0.9rem;
+        line-height: 1.45;
+    }
+
+    .modal-btn {
+        min-width: 92px;
+        min-height: 44px;
+        font-size: 0.95rem;
+        padding: 10px 18px;
     }
 }
 
-/* Repayment Summary */
-.repayment-summary {
-    background-color: #f0f8ff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 1rem;
-    margin-top: 1.5rem;
-    font-size: 1rem;
-  }
-  
-  .repayment-summary h4 {
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-  }
-  
-  .repayment-summary p {
-    margin: 0.3rem 0;
-    color: #333;
-  }
+@media (hover: none) and (pointer: coarse) {
+    .btn-loan:hover,
+    .modal-btn:hover {
+        transform: none;
+    }
+}
 
-  
-  /* Loan Terms Section */
-.loan-terms {
-    background-color: #f1f8ff;
-    padding: 60px 0;
-    margin-top: 60px;
-  }
-  
-  .loan-terms h2 {
-    color: var(--primary);
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  .loan-terms p {
-    text-align: center;
-    color: #555;
-    margin-bottom: 1.5rem;
-  }
-  
-  .terms-list {
-    max-width: 800px;
-    margin: 0 auto;
-    list-style-type: disc;
-    padding-left: 1.5rem;
-    color: #333;
-    line-height: 1.7;
-  }
-  
+/* Premium card feel */
+.loan-info,
+.loan-form-container {
+    border: 1px solid rgba(14, 42, 71, 0.06);
+    box-shadow: 0 12px 28px rgba(14, 42, 71, 0.08);
+}
 
-  /* Modal Styles popup submission message */
-  /* BACKDROP */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(6px);
-    animation: fadeIn 0.3s ease;
-  }
-  
-  /* ANIMATIONS */
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes slideUp { from { transform: translateY(30px); opacity: 0; }
-                       to { transform: translateY(0); opacity: 1; } }
-  
-  /* MODAL BOX */
-  .modal-box {
-    max-width: 420px;
-    margin: 12% auto;
-    background: #0a1a33; /* navy blue */
-    border: 1px solid rgba(255, 215, 0, 0.25);
-    padding: 30px;
-    border-radius: 18px;
-    color: #ffffff;
-    text-align: center;
-    animation: slideUp 0.4s ease-out;
-    box-shadow: 0 0 30px rgba(0,0,0,0.25);
-  }
-  
-  /* LOGO CIRCLE */
-  .logo-circle {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 3px solid #d4af37; /* gold border */
+/* Cleaner section headings */
+.loan-form h3 {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px auto;
-  }
-  
-  .logo-inner {
-    font-size: 35px;
+    gap: 0.6rem;
+    letter-spacing: 0.2px;
+}
+
+/* Better inputs */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background-color: #fff;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #98a6b5;
+}
+
+/* Better focus */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 4px rgba(212, 178, 106, 0.12);
+}
+
+/* Better submit section */
+.form-submit {
+    margin-top: 2.2rem;
+}
+
+/* Slightly richer repayment box */
+.repayment-summary {
+    background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+    border: 1px solid #dbe7f1;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* =========================
+   WIZARD FORM STYLES
+========================= */
+
+.wizard-form {
+    position: relative;
+}
+
+.wizard-progress-wrap {
+    margin-bottom: 2rem;
+}
+
+.wizard-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e7edf3;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.wizard-progress-fill {
+    height: 100%;
+    width: 20%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+.wizard-progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.wizard-step-text {
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #d4af37;
-    font-family: 'Georgia', serif;
-  }
-  
-  /* TEXT */
-  .modal-title {
-    font-size: 22px;
-    margin-bottom: 10px;
-    color: #d4af37;
-    letter-spacing: 0.5px;
-  }
-  
-  .modal-message {
-    font-size: 16px;
-    margin-bottom: 6px;
-    line-height: 1.5;
-  }
-  
-  .modal-message-sm {
-    font-size: 14px;
-    opacity: 0.85;
-    line-height: 1.5;
-  }
-  
-  /* BUTTON */
-  .modal-btn {
-    margin-top: 20px;
-    padding: 12px 25px;
-    background: #d4af37; /* gold */
-    color: #0a1a33;
-    border: none;
+    color: var(--secondary);
+}
+
+.wizard-step-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.form-step {
+    display: none;
+    animation: wizardFade 0.25s ease;
+}
+
+.form-step.active {
+    display: block;
+}
+
+@keyframes wizardFade {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wizard-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.wizard-btn {
+    min-height: 48px;
+    min-width: 120px;
+    padding: 12px 20px;
     border-radius: 10px;
-    cursor: pointer;
-    font-size: 15px;
+    border: none;
     font-weight: 600;
-    transition: 0.2s ease;
-  }
-  
-  .modal-btn:hover {
-    background: #e8c44a;
-  }
-  
+    font-size: 0.98rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.12s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.wizard-btn:active {
+    transform: scale(0.98);
+}
+
+.wizard-btn-secondary {
+    background: #eef3f8;
+    color: var(--primary);
+}
+
+.wizard-btn-secondary:hover {
+    background: #e3ebf3;
+}
+
+.wizard-btn-primary {
+    background: var(--primary);
+    color: var(--light);
+}
+
+.wizard-btn-primary:hover {
+    background: var(--secondary);
+    color: var(--primary);
+}
+
+#submitStepBtn {
+    display: none;
+}
+
+.review-box {
+    background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+    border: 1px solid #dbe7f1;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.review-item {
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(14, 42, 71, 0.08);
+    color: #333;
+    line-height: 1.5;
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-item strong {
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .wizard-progress-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .wizard-buttons {
+        flex-direction: column;
+    }
+
+    .wizard-btn {
+        width: 100%;
+    }
+}
+
+/* =========================
+   STEP ICON UPGRADE
+========================= */
+
+.wizard-step-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.wizard-step-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), #1d466f);
+    color: var(--light);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    box-shadow: 0 8px 18px rgba(14, 42, 71, 0.18);
+    flex-shrink: 0;
+}
+
+/* =========================
+   PREMIUM REVIEW CARDS
+========================= */
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.review-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    border: 1px solid rgba(14, 42, 71, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba(14, 42, 71, 0.08);
+}
+
+.review-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 1rem 1rem 0.9rem;
+    background: rgba(14, 42, 71, 0.03);
+    border-bottom: 1px solid rgba(14, 42, 71, 0.06);
+}
+
+.review-card-header i {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--light);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.review-card-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--primary);
+}
+
+.review-card-body {
+    padding: 0.9rem 1rem 1rem;
+}
+
+.review-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(14, 42, 71, 0.06);
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-item span {
+    color: #66788a;
+    font-size: 0.92rem;
+    flex: 1;
+}
+
+.review-item strong {
+    color: var(--primary);
+    font-size: 0.94rem;
+    text-align: right;
+    flex: 1;
+    word-break: break-word;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wizard-step-title-wrap {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .wizard-step-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 0.92rem;
+    }
+
+    .review-card {
+        border-radius: 14px;
+    }
+
+    .review-card-header {
+        padding: 0.9rem 0.9rem 0.8rem;
+    }
+
+    .review-card-body {
+        padding: 0.8rem 0.9rem 0.9rem;
+    }
+
+    .review-item {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .review-item strong {
+        text-align: left;
+    }
+}
